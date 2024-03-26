@@ -22,10 +22,5 @@
         "psr-4": {
             "EonX\\EasyBankFiles\\Tests\\": "tests"
         }
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "5.11-dev"
-        }
     }
 }
