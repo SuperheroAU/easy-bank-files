@@ -3,10 +3,10 @@ declare(strict_types=1);
 
 namespace EonX\EasyBankFiles\Generators\Exceptions;
 
-use EonX\EasyErrorHandler\Exceptions\ValidationException;
+use Exception;
 use Throwable;
 
-final class ValidationFailedException extends ValidationException
+final class ValidationFailedException extends Exception
 {
     public function __construct(array $errors, ?string $message = null, ?int $code = null, ?Throwable $previous = null)
     {
@@ -30,5 +30,22 @@ final class ValidationFailedException extends ValidationException
         }
 
         return $errorsToString;
+    }
+
+    protected array $errors = [];
+
+    public function getErrors(): array
+    {
+        return $this->errors;
+    }
+
+    /**
+     * Sets validation errors.
+     */
+    public function setErrors(array $errors): self
+    {
+        $this->errors = $errors;
+
+        return $this;
     }
 }
